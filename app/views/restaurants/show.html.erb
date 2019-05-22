@@ -1,0 +1,47 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  <h1>
+    <%= @restaurant.name %>
+  </h1>
+  <p>
+    <strong>Address:</strong>
+    <%= @restaurant.address %>
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%= @restaurant.category %>
+  </p>
+  <p>
+    <strong>Phone Number:</strong>
+    <%= @restaurant.phone_number %>
+  </p>
+</div>
+<div>
+  <h2>Reviews</h2>
+</div>
+<div>
+  <div class="reviews">
+      <% @restaurant.reviews.each do |review| %>
+        <div class="border p-3 my-3 rounded review-card ">
+          <p><strong>Rating: </strong>
+            <% review.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          </p>
+          <p><%= review.content %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= render 'form2' %>
+    </div>
+
+    <div id="go-back">
+      <%= link_to "Go back", restaurants_path %>
+    </div>
+</div>
